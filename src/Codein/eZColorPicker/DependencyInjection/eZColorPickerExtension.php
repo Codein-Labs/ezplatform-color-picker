@@ -28,6 +28,10 @@ class eZColorPickerExtension extends Extension implements PrependExtensionInterf
         $coreExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/ezplatform.yaml');
         $container->prependExtensionConfig('ezpublish', Yaml::parseFile($coreExtensionConfigFile));
         $container->addResource(new FileResource($coreExtensionConfigFile));
+
+        $twigExtensionConfigFile = realpath(__DIR__ . '/../Resources/config/prepend/twig.yaml');
+        $container->prependExtensionConfig('twig', Yaml::parseFile($twigExtensionConfigFile));
+        $container->addResource(new FileResource($twigExtensionConfigFile));
     }
 
 
