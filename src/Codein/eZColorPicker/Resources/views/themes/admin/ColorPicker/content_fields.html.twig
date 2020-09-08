@@ -1,3 +1,7 @@
 {% block codeincolor_field %}
-    <div style="height: 100%; width: 100px; display: inline-block; background-color: {{ field.value.HEX }}">&nbsp;</div> {{ field.value.HEX }}
+    <div class="codeincolor__value">
+        <div class="codeincolor__preview" style="background-color: {{ field.value.HEX }}">&nbsp;</div>
+        <span class="codeincolor__hex">{{ field.value.HEX }}</span>
+    </div>
+
 {% endblock %}
