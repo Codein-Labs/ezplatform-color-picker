@@ -13,6 +13,7 @@ final class ColorPickerSettingsType extends AbstractType
         $builder->add('defaultValue', ColorPickerType::class, [
             'required' => false,
             'useViewTransformer' => true,
+            'label' => 'codeincolor.default.color',
         ]);
     }
 }

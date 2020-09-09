@@ -1,3 +1,5 @@
+{% trans_default_domain 'codeincolor_fieldtype' %}
+
 {% block codeincolor_widget %}
     {% set pickerContainerId = 'codeincolor__' ~ form.vars.id %}
     <div id="{{ pickerContainerId }}">
@@ -6,7 +8,25 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            codeinColor.createPickr({"container": "{{ pickerContainerId }}" });
+            codeinColor.createPickr({
+                "container": "{{ pickerContainerId }}",
+                "i18n": {
+                    "ui:dialog": "{{ "codeincolor.pickr.ui.dialog"|trans }}",
+                    "btn:toggle": "{{ "codeincolor.pickr.btn.toggle"|trans }}",
+                    "btn:swatch": "{{ "codeincolor.pickr.btn.swatch"|trans }}",
+                    "btn:last-color": "{{ "codeincolor.pickr.btn.last-color"|trans }}",
+                    "btn:save": "{{ "codeincolor.pickr.btn.save"|trans }}",
+                    "btn:cancel": "{{ "codeincolor.pickr.btn.cancel"|trans }}",
+                    "btn:clear": "{{ "codeincolor.pickr.btn.clear"|trans }}",
+                    "aria:btn:save": "{{ "codeincolor.pickr.aria.btn.save"|trans }}",
+                    "aria:btn:cancel": "{{ "codeincolor.pickr.aria.btn.cancel"|trans }}",
+                    "aria:btn:clear": "{{ "codeincolor.pickr.aria.btn.clear"|trans }}",
+                    "aria:input": "{{ "codeincolor.pickr.aria.input"|trans }}",
+                    "aria:palette": "{{ "codeincolor.pickr.aria.palette"|trans }}",
+                    "aria:hue": "{{ "codeincolor.pickr.aria.hue"|trans }}",
+                    "aria:opacity": "{{ "codeincolor.pickr.aria.opacity"|trans }}"
+                }
+            });
         });
     </script>
 {% endblock %}

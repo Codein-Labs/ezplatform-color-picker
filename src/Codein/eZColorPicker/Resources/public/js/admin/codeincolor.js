@@ -34,7 +34,8 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
                         cancel: true,
                         save: true
                     }
-                }
+                },
+                i18n: params.i18n
             });
             pickr.on('save', (color, instance) => {
                 let container = this.getContainer(instance.options.el.getAttribute('data-pickr-container-id'))
