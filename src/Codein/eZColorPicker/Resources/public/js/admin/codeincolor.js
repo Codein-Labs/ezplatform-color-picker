@@ -31,6 +31,7 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
                         cmyk: true,
                         input: true,
                         clear: true,
+                        cancel: true,
                         save: true
                     }
                 }
@@ -52,6 +53,7 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
                         this.setInputValue(container, 'HEX', this.getHEXValue(color))
                     }
                 }
+                instance.hide();
             })
         },
         getContainer: function(containerId) {
