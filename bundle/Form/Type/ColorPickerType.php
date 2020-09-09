@@ -6,7 +6,7 @@ namespace Codein\eZColorPicker\Form\Type;
 use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -16,11 +16,14 @@ final class ColorPickerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('RGBa', HiddenType::class);
-        $builder->add('HEXa', HiddenType::class);
-        $builder->add('HSVa', HiddenType::class);
-        $builder->add('RGB', HiddenType::class);
-        $builder->add('HEX', HiddenType::class);
+        foreach (['HEX', 'HEXa', 'RGBa', 'HSVa', 'RGB'] as $field) {
+            $builder->add($field, TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'readonly' => 'readonly'
+                ]
+            ]);
+        }
 
         if(is_array($options['defaultValue'])) {
             $defaultValue = $options['defaultValue'];

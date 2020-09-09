@@ -1,1 +1,41 @@
 @import "../../pickr/dist/themes/classic.min.css";
+
+.codeincolor {
+  &__edit-container {
+    display: flex;
+
+    .ez-data-source__field {
+      margin-left: 5px;
+    }
+    .pickr {
+      margin-bottom: 10px;
+    }
+    .pcr-button {
+      width: 60px;
+      height: 100%;
+    }
+  }
+}
+
+fieldset.form-group {
+  .codeincolor {
+    &__edit-container {
+      .pickr {
+        margin-bottom: 0;
+        width: 92px;
+        height: 92px;
+
+        .pcr-button {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      > div {
+        .form-group {
+          margin-left: 5px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

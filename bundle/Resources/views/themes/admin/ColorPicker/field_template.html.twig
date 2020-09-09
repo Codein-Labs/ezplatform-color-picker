@@ -2,7 +2,7 @@
 
 {% block codeincolor_widget %}
     {% set pickerContainerId = 'codeincolor__' ~ form.vars.id %}
-    <div id="{{ pickerContainerId }}">
+    <div id="{{ pickerContainerId }}" class="codeincolor__edit-container">
         <button type="button" class="codeincolor__button" data-pickr-container-id="{{ pickerContainerId }}"></button>
         {{ block('form_widget') }}
     </div>
