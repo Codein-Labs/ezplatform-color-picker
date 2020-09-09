@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Codein\eZColorPicker\Form\Type;
 
-use Codein\eZColorPicker\FieldType\ColorPicker\Value;
+use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -25,9 +25,9 @@ final class ColorPickerType extends AbstractType
         if(is_array($options['defaultValue'])) {
             $defaultValue = $options['defaultValue'];
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($defaultValue) {
-                /** @var Value $colorPickerValue */
+                /** @var ColorPickerValue $colorPickerValue */
                 $colorPickerValue = $event->getData();
-                $defaultValue = (new Value())->setValueFromArray($defaultValue);
+                $defaultValue = (new ColorPickerValue())->setValueFromArray($defaultValue);
                 if($colorPickerValue->isEmpty() && !$defaultValue->isEmpty()) {
                     $event->setData($defaultValue);
                 }
@@ -37,17 +37,17 @@ final class ColorPickerType extends AbstractType
         if($options['useViewTransformer']) {
             $builder->addViewTransformer(new CallbackTransformer(
                 function ($value) {
-                    $colorPickerValue = new Value();
+                    $colorPickerValue = new ColorPickerValue();
                     if(is_array($value)) {
                         $colorPickerValue->setValueFromArray($value);
                     }
                     return $colorPickerValue;
                 },
                 function ($value) {
-                    if ($value instanceof Value) {
+                    if ($value instanceof ColorPickerValue) {
                         return $value->getValueAsArray();
                     }
-                    $colorPickerValue = new Value();
+                    $colorPickerValue = new ColorPickerValue();
                     return $colorPickerValue->getValueAsArray();
                 }
             ));
@@ -57,7 +57,7 @@ final class ColorPickerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Value::class,
+            'data_class' => ColorPickerValue::class,
             'useViewTransformer' => false,
             'defaultValue' => null,
         ]);

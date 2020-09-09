@@ -11,6 +11,7 @@ use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
 use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
 use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
 use Symfony\Component\Form\FormInterface;
+use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
 
 final class Type extends GenericType implements FieldValueFormMapperInterface, FieldDefinitionFormMapperInterface
 {
@@ -23,8 +24,8 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
     {
         return [
             'defaultValue' => [
-                'type' => Value::class,
-                'default' => new Value(),
+                'type' => ColorPickerValue::class,
+                'default' => new ColorPickerValue(),
             ],
         ];
     }
@@ -45,6 +46,4 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
             'label' => false,
         ]);
     }
-
-
 }
