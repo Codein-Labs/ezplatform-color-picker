@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ColorPickerType extends AbstractType
@@ -25,7 +27,11 @@ final class ColorPickerType extends AbstractType
             ]);
         }
 
-        if(is_array($options['defaultValue'])) {
+        /**
+         * If the value is empty and the field is required and has a default value
+         * We need to override the current value with the default one
+         */
+        if(is_array($options['defaultValue']) && $options['required']) {
             $defaultValue = $options['defaultValue'];
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($defaultValue) {
                 /** @var ColorPickerValue $colorPickerValue */
@@ -37,6 +43,10 @@ final class ColorPickerType extends AbstractType
             });
         }
 
+        /**
+         * Need to use à view transformer in order to use this type to set the default value
+         * with a color picker
+         */
         if($options['useViewTransformer']) {
             $builder->addViewTransformer(new CallbackTransformer(
                 function ($value) {
@@ -55,6 +65,17 @@ final class ColorPickerType extends AbstractType
                 }
             ));
         }
+    }
+
+    public function buildView(FormView $view, FormInterface $form, array $options)
+    {
+        $view->vars = array_merge($view->vars, [
+            'formParams' => \json_encode([
+                'required' => $options['required'],
+                'defaultValue' => $options['defaultValue']
+            ])
+        ]);
+        parent::buildView($view, $form, $options);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

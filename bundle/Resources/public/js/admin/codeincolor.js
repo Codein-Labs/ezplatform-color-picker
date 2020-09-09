@@ -3,6 +3,7 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
 
 (function(global, doc, eZ) {
     global.codeinColor = {
+        formParams: [],
         createPickr: function(params) {
             let containerElt = this.getContainer(params.container)
             let buttonElt = containerElt.querySelector('.codeincolor__button')
@@ -11,6 +12,8 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
             if(currentValue.length > 0) {
                 currentColor = currentValue
             }
+
+            this.formParams[params.container] = params.formParams
 
             let pickr = Pickr.create({
                 theme: 'classic',
@@ -37,6 +40,22 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
                 },
                 i18n: params.i18n
             });
+            pickr.on('show', (color, instance) => {
+                let containerId = instance.options.el.getAttribute('data-pickr-container-id')
+                let container = this.getContainer(containerId)
+                if(this.formParams[containerId] != undefined && this.getInputValue(container, "HEXa").length === 0) {
+                    let defaultColor = '#106d95FF'
+                    if(this.formParams[containerId].defaultValue.HEXa != null) {
+                        defaultColor = this.formParams[containerId].defaultValue.HEXa
+                    }
+                    let colorRepresentation = instance.getColorRepresentation()
+                    let element = instance.getRoot().app.querySelector('input.pcr-result')
+                    let event = new Event('input')
+                    element.value = defaultColor
+                    element.dispatchEvent(event)
+                    instance.setColorRepresentation(colorRepresentation)
+                }
+            })
             pickr.on('save', (color, instance) => {
                 let container = this.getContainer(instance.options.el.getAttribute('data-pickr-container-id'))
                 if(container !== null) {
