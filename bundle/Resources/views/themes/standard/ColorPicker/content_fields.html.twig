@@ -1,3 +1,10 @@
-{% block codeincolor_field %}
-    {{ field.value.HEX }}
-{% endblock %}
+{%- block codeincolor_field -%}
+{% apply spaceless %}
+    {% set format = parameters.format|default(constant('Codein\\eZColorPicker\\FieldType\\ColorPicker\\Value::FORMAT_RGBA')) %}
+    {% if parameters.default is defined and field.value.isEmpty() %}
+        {{ parameters.default }}
+    {% else %}
+        {{ field.value.getValueInFormat(format) }}
+    {% endif %}
+{% endapply %}
+{% endblock -%}

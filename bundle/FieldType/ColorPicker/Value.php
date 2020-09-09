@@ -7,6 +7,12 @@ use eZ\Publish\SPI\FieldType\Value as ValueInterface;
 
 final class Value implements ValueInterface
 {
+    const FORMAT_RGBA = 'RGBa';
+    const FORMAT_HEXA = 'HEXa';
+    const FORMAT_HSVA = 'HSVa';
+    const FORMAT_RGB = 'RGB';
+    const FORMAT_HEX = 'HEX';
+
     public $RGBa;
     public $HEXa;
     public $HSVa;
@@ -41,5 +47,10 @@ final class Value implements ValueInterface
             }
         }
         return false;
+    }
+
+    public function getValueInFormat($format)
+    {
+        return $this->{$format};
     }
 }
