@@ -18,7 +18,7 @@ final class ColorPickerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        foreach (['HEX', 'HEXa', 'RGBa', 'HSVa', 'RGB'] as $field) {
+        foreach (['HEX', 'HEXa', 'RGB', 'RGBa', 'HSVa'] as $field) {
             $builder->add($field, TextType::class, [
                 'label' => false,
                 'attr' => [
