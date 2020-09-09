@@ -22,9 +22,9 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
     public function getSettingsSchema(): array
     {
         return [
-            'default' => [
-                'type' => 'string',
-                //'default' => '#00000000',
+            'defaultValue' => [
+                'type' => Value::class,
+                'default' => new Value(),
             ],
         ];
     }
@@ -32,10 +32,10 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data)
     {
         $definition = $data->fieldDefinition;
-
         $fieldForm->add('value', ColorPickerType::class, [
             'required' => $definition->isRequired,
-            'label' => $definition->getName()
+            'label' => $definition->getName(),
+            'defaultValue' => $definition->fieldSettings['defaultValue'],
         ]);
     }
 
