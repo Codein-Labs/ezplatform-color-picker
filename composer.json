@@ -29,7 +29,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Codein\\eZColorPicker\\": "bundle"
+            "Codein\\eZColorPicker\\": "bundle",
+            "Codein\\ColorConverter\\": "lib/ColorConverter",
+            "Codein\\Tests\\eZColorPicker\\": "tests/bundle",
+            "Codein\\Tests\\ColorConverter\\": "tests/lib/ColorConverter"
+
         }
     }
 }
