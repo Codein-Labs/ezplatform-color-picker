@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Codein\\eZColorPicker\\": "src/Codein/eZColorPicker"
+            "Codein\\eZColorPicker\\": "bundle"
         }
     }
 }
