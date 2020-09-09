@@ -1,5 +1,5 @@
-import './pickr/dist/themes/classic.min.css';
-import Pickr from './pickr/dist/pickr.es5.min';
+import '../../pickr/dist/themes/classic.min.css';
+import Pickr from '../../pickr/dist/pickr.es5.min';
 
 (function(global, doc, eZ) {
     global.codeinColor = {
