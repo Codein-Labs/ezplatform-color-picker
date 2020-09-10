@@ -20,7 +20,7 @@ class eZColorPickerExtension extends Extension implements PrependExtensionInterf
             $container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
-        $loader->load('services.yaml');
+        $loader->load('fieldtype.yaml');
     }
 
     public function prepend(ContainerBuilder $container)
