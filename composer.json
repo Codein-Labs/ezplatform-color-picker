@@ -35,5 +35,8 @@
             "Codein\\Tests\\ColorConverter\\": "tests/lib/ColorConverter"
 
         }
+    },
+    "require-dev": {
+        "matthiasnoback/symfony-dependency-injection-test": "^4.0@dev"
     }
 }
