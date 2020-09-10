@@ -1,10 +1,11 @@
 <?php
 
-namespace Codein\ColorConverter\Test;
+
+namespace Codein\Tests\ColorConverter;
 
 use Codein\ColorConverter\ColorConverterTrait;
 
-class ColorConverterTest
+class ColorConverterTestInstance
 {
     use ColorConverterTrait;
 
