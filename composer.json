@@ -26,7 +26,7 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
-        "ezsystems/ezplatform-kernel": "~1.1.0@dev"
+        "ezsystems/ezpublish-kernel": "^7.5@dev"
     },
     "autoload": {
         "psr-4": {
@@ -38,6 +38,6 @@
         }
     },
     "require-dev": {
-        "matthiasnoback/symfony-dependency-injection-test": "^4.0@dev"
+        "matthiasnoback/symfony-dependency-injection-test": "v2.3.*"
     }
 }
