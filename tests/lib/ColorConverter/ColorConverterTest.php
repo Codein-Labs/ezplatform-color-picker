@@ -91,4 +91,16 @@ class ColorConverterTest extends TestCase
         $this->assertEquals(ColorPickerDataFixtures::VALUE_RGB, $this->instance->convertHSVaToRGB($this->HSVa));
         $this->assertEquals(ColorPickerDataFixtures::VALUE_HEX, $this->instance->convertHSVaToHEX($this->HSVa));
     }
+
+    public function testLimitValues() {
+        $this->assertEquals('rgba(255, 204, 0, 1.00)', (string)$this->instance->convertHSVaToRGBa(
+            $this->instance->convertStringToHSVa('#FFCC00FF')
+        ));
+        $this->assertEquals('rgba(255, 255, 0, 1.00)', (string)$this->instance->convertHSVaToRGBa(
+            $this->instance->convertStringToHSVa('#FFFF00FF')
+        ));
+        $this->assertEquals('rgba(255, 255, 204, 1.00)', (string)$this->instance->convertHSVaToRGBa(
+            $this->instance->convertStringToHSVa('#FFFFCCFF')
+        ));
+    }
 }

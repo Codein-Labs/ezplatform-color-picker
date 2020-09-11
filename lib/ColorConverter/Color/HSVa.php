@@ -71,7 +71,7 @@ class HSVa
             }
         }
 
-        $this->H = round($this->H * 100);
+        $this->H = round($this->H * 360);
         $this->S = round($this->S * 100);
         $this->V = round($this->V * 100);
 
