@@ -4,17 +4,14 @@
 namespace Codein\eZColorPicker\FieldType\ColorPicker;
 
 use Codein\ColorConverter\ColorConverter;
-use Codein\eZColorPicker\Form\Type\ColorPickerSettingsType;
-use Codein\eZColorPicker\Form\Type\ColorPickerType;
-use eZ\Publish\SPI\FieldType\Generic\Type as GenericType;
-use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
-use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
-use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
-use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
-use Symfony\Component\Form\FormInterface;
+use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
+use eZ\Publish\Core\FieldType\FieldType;
+use eZ\Publish\SPI\FieldType\Nameable;
+use eZ\Publish\SPI\FieldType\Value;
+use eZ\Publish\Core\FieldType\Value as BaseValue;
 use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
 
-final class Type extends GenericType implements FieldValueFormMapperInterface, FieldDefinitionFormMapperInterface
+class Type extends FieldType implements Nameable
 {
     /**
      * @var ColorConverter
@@ -41,6 +38,11 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
         ];
     }
 
+    public function validateFieldSettings($fieldSettings)
+    {
+        return [];
+    }
+
     protected function createValueFromInput($inputValue)
     {
         if($inputValue instanceof ColorPickerValue) {
@@ -61,20 +63,44 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
         return $value;
     }
 
-    public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data)
+    protected function checkValueStructure(BaseValue $value)
     {
-        $definition = $data->fieldDefinition;
-        $fieldForm->add('value', ColorPickerType::class, [
-            'required' => $definition->isRequired,
-            'label' => $definition->getName(),
-            'defaultValue' => $definition->fieldSettings['defaultValue'],
-        ]);
     }
 
-    public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
+    public function getName(Value $value)
     {
-        $fieldDefinitionForm->add('fieldSettings', ColorPickerSettingsType::class, [
-            'label' => false,
-        ]);
+        return (string)$value;
+    }
+
+    public function getEmptyValue()
+    {
+        return new ColorPickerValue();
+    }
+
+    public function fromHash($hash)
+    {
+        $value = new ColorPickerValue();
+        if(is_array($hash)) {
+            $value->setValueFromHash($hash);
+        }
+        return $value;
+    }
+
+    public function toHash(Value $value)
+    {
+        if($value instanceof ColorPickerValue) {
+            return $value->getValueAsHash();
+        }
+        return [];
+    }
+
+    public function getFieldName(Value $value, FieldDefinition $fieldDefinition, $languageCode)
+    {
+        return (string)$value;
+    }
+
+    protected function getSortInfo(BaseValue $value)
+    {
+        return (string)$value;
     }
 }

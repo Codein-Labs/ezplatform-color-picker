@@ -6,6 +6,11 @@ namespace Codein\eZColorPicker\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * Class ColorPickerSettingsType
+ * @package Codein\eZColorPicker\Form\Type
+ * @deprecated
+ */
 final class ColorPickerSettingsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -14,6 +19,6 @@ final class ColorPickerSettingsType extends AbstractType
             'required' => false,
             'useViewTransformer' => true,
             'label' => 'codeincolor.default.color',
-        ]);
+        ])->setAutoInitialize(false);
     }
 }

@@ -3,9 +3,9 @@
 
 namespace Codein\eZColorPicker\FieldType\ColorPicker;
 
-use eZ\Publish\SPI\FieldType\Value as ValueInterface;
+use eZ\Publish\Core\FieldType\Value as BaseValue;
 
-final class Value implements ValueInterface
+class Value extends BaseValue
 {
     const FORMAT_RGBA = 'RGBa';
     const FORMAT_HEXA = 'HEXa';
