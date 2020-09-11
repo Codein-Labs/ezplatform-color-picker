@@ -25,7 +25,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.3",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ezsystems/ezplatform-kernel": "~1.1.0@dev"
     },
     "autoload": {
         "psr-4": {
