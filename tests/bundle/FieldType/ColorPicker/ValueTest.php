@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
-use Codein\Tests\ColorConverter\ColorConverterTraitTest;
+use Codein\Tests\ColorConverter\ColorConverterTest;
 
 class ValueTest extends TestCase
 {
@@ -12,11 +12,11 @@ class ValueTest extends TestCase
     private $value;
 
     private $data = [
-        'RGBa' => ColorConverterTraitTest::VALUE_RGBa,
-        'HEXa' => ColorConverterTraitTest::VALUE_HEXa,
-        'HSVa' => ColorConverterTraitTest::VALUE_HSVa,
-        'RGB' => ColorConverterTraitTest::VALUE_RGB,
-        'HEX' => ColorConverterTraitTest::VALUE_HEX,
+        'RGBa' => ColorConverterTest::VALUE_RGBa,
+        'HEXa' => ColorConverterTest::VALUE_HEXa,
+        'HSVa' => ColorConverterTest::VALUE_HSVa,
+        'RGB' => ColorConverterTest::VALUE_RGB,
+        'HEX' => ColorConverterTest::VALUE_HEX,
     ];
 
     public function setUp(): void

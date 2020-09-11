@@ -30,6 +30,16 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
         ];
     }
 
+    protected function createValueFromInput($inputValue)
+    {
+        if($inputValue instanceof ColorPickerValue) {
+            return $inputValue;
+        } elseif (is_array($inputValue)) {
+            return (new ColorPickerValue())->setValueFromHash($inputValue);
+        }
+        return new ColorPickerValue();
+    }
+
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data)
     {
         $definition = $data->fieldDefinition;

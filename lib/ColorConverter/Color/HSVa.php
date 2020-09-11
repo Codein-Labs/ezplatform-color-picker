@@ -2,8 +2,6 @@
 
 namespace Codein\ColorConverter\Color;
 
-use Codein\ColorConverter\ColorConverterInputInterface;
-
 class HSVa
 {
     const FORMAT = "hsva(%d, %d%%, %d%%, %.2f)";
@@ -13,17 +11,19 @@ class HSVa
     public $V = 0;
     public $a = 0;
 
-    public function __construct($string = "")
+    public static function getFromHSVaMatches(array $matches)
     {
-        $matches = [];
+        return (new HSVa())->fromHSVaMatches($matches);
+    }
 
-        if(preg_match(ColorConverterInputInterface::INPUT_HSVA, $string, $matches)) {
-            $this->fromHSVaMatches($matches);
-        } elseif(preg_match(ColorConverterInputInterface::INPUT_RGBA, $string, $matches)) {
-            $this->fromRGBaMatches($matches);
-        } elseif(preg_match(ColorConverterInputInterface::INPUT_HEXA, $string, $matches)) {
-            $this->fromHEXaMatches($matches);
-        }
+    public static function getFromRGBaMatches(array $matches)
+    {
+        return (new HSVa())->fromRGBaMatches($matches);
+    }
+
+    public static function getFromHEXaMatches(array $matches)
+    {
+        return (new HSVa())->fromHEXaMatches($matches);
     }
 
     protected function fromHSVaMatches($matches)
@@ -32,6 +32,7 @@ class HSVa
         $this->S = $matches[4];
         $this->V = $matches[5];
         $this->a = $matches[6];
+        return $this;
     }
 
     protected function fromRGBaMatches($matches)
@@ -74,11 +75,12 @@ class HSVa
         $this->S = round($this->S * 100);
         $this->V = round($this->V * 100);
 
-        if(isset($matches[6])) {
+        if(isset($matches[6]) && strlen($matches[6] > 0)) {
             $this->a = $matches[6];
         } else {
             $this->a = 1;
         }
+        return $this;
     }
 
     protected function fromHEXaMatches($matches)
@@ -94,6 +96,7 @@ class HSVa
             $RGBaMatches[6] = hexdec($parts['3'])/255;
         }
         $this->fromRGBaMatches($RGBaMatches);
+        return $this;
     }
 
     public function __toString()
