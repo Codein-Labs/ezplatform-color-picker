@@ -34,10 +34,12 @@ class TypeTest extends TestCase
     public function setUp(): void
     {
         if(class_exists('eZ\\Publish\\SPI\\FieldType\\Generic\\Type')) {
+            /** Version 3.1 */
             $serializerMock = $this->getMockBuilder(ValueSerializerInterface::class)->getMock();
             $validatorMock = $this->getMockBuilder(ValidatorInterface::class)->getMock();
             $this->instance = new ColorPickerType($serializerMock, $validatorMock);
         } else {
+            /** Version 2.5 */
             $this->instance = new ColorPickerType();
         }
 
