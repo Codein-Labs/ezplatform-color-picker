@@ -3,6 +3,7 @@
 
 namespace Codein\eZColorPicker\FieldType\ColorPicker;
 
+use Codein\ColorConverter\ColorConverter;
 use Codein\eZColorPicker\Form\Type\ColorPickerSettingsType;
 use Codein\eZColorPicker\Form\Type\ColorPickerType;
 use eZ\Publish\SPI\FieldType\Generic\Type as GenericType;
@@ -15,6 +16,16 @@ use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
 
 final class Type extends GenericType implements FieldValueFormMapperInterface, FieldDefinitionFormMapperInterface
 {
+    /**
+     * @var ColorConverter
+     */
+    protected $colorConverter;
+
+    public function setColorConverter(ColorConverter $colorConverter)
+    {
+        $this->colorConverter = $colorConverter;
+    }
+
     public function getFieldTypeIdentifier(): string
     {
         return 'codeincolor';
@@ -37,7 +48,17 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
         } elseif (is_array($inputValue)) {
             return (new ColorPickerValue())->setValueFromHash($inputValue);
         }
-        return new ColorPickerValue();
+
+        $value = new ColorPickerValue();
+        if(is_string($inputValue) && $this->colorConverter->stringIsColor($inputValue)) {
+            $HSVa = $this->colorConverter->convertStringToHSVa($inputValue);
+            $value->HSVa = (string)$HSVa;
+            $value->RGBa = (string)$this->colorConverter->convertHSVaToRGBa($HSVa);
+            $value->HEXa = (string)$this->colorConverter->convertHSVaToHEXa($HSVa);
+            $value->RGB  = (string)$this->colorConverter->convertHSVaToRGB($HSVa);
+            $value->HEX  = (string)$this->colorConverter->convertHSVaToHEX($HSVa);
+        }
+        return $value;
     }
 
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data)

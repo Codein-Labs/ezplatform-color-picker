@@ -6,6 +6,8 @@ services:
     autoconfigure: false
     autowire: true
     public: true
+    calls:
+      - [ 'setColorConverter', ["@Codein\\ColorConverter\\ColorConverter"] ]
     tags:
       - { name: ezplatform.field_type, alias: "%codein.fieldtype.color.identifier%" }
       - { name: ezplatform.field_type.form_mapper.value, fieldType: "%codein.fieldtype.color.identifier%" }

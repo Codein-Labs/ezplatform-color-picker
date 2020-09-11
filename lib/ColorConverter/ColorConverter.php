@@ -27,6 +27,17 @@ class ColorConverter
     }
 
     /**
+     * @param $input
+     * @return bool
+     */
+    public function stringIsColor($input)
+    {
+        return $this->isInputValid($input, self::INPUT_HSVA)
+            || $this->isInputValid($input, self::INPUT_RGBA)
+            || $this->isInputValid($input, self::INPUT_HEXA);
+    }
+
+    /**
      * @param $string
      * @return HSVa
      */

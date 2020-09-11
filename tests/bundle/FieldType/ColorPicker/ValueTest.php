@@ -1,5 +1,6 @@
 <?php
 
+use Codein\Tests\ColorConverter\ColorPickerDataFixtures;
 use PHPUnit\Framework\TestCase;
 use Codein\eZColorPicker\FieldType\ColorPicker\Value as ColorPickerValue;
 use Codein\Tests\ColorConverter\ColorConverterTest;
@@ -11,17 +12,15 @@ class ValueTest extends TestCase
      */
     private $value;
 
-    private $data = [
-        'RGBa' => ColorConverterTest::VALUE_RGBa,
-        'HEXa' => ColorConverterTest::VALUE_HEXa,
-        'HSVa' => ColorConverterTest::VALUE_HSVa,
-        'RGB' => ColorConverterTest::VALUE_RGB,
-        'HEX' => ColorConverterTest::VALUE_HEX,
-    ];
+    /**
+     * @var string[]
+     */
+    private $data;
 
     public function setUp(): void
     {
         $this->value = new ColorPickerValue();
+        $this->data = ColorPickerDataFixtures::ARRAY_VALUE;
     }
 
     public function testIsEmpty()
