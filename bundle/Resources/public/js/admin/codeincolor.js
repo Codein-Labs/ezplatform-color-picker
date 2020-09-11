@@ -1,7 +1,7 @@
 import '../../pickr/dist/themes/classic.min.css';
 import Pickr from '../../pickr/dist/pickr.es5.min';
 
-(function(global, doc, eZ) {
+(function(global) {
     global.codeinColor = {
         formParams: [],
         createPickr: function(params) {
@@ -73,6 +73,9 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
                         this.setInputValue(container, 'HEX', this.getHEXValue(color))
                     }
                 }
+                instance.hide();
+            })
+            pickr.on('cancel', (color, instance) => {
                 instance.hide();
             })
         },
