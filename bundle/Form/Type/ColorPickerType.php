@@ -36,7 +36,7 @@ final class ColorPickerType extends AbstractType
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($defaultValue) {
                 /** @var ColorPickerValue $colorPickerValue */
                 $colorPickerValue = $event->getData();
-                $defaultValue = (new ColorPickerValue())->setValueFromArray($defaultValue);
+                $defaultValue = (new ColorPickerValue())->setValueFromHash($defaultValue);
                 if($colorPickerValue->isEmpty() && !$defaultValue->isEmpty()) {
                     $event->setData($defaultValue);
                 }
@@ -52,16 +52,16 @@ final class ColorPickerType extends AbstractType
                 function ($value) {
                     $colorPickerValue = new ColorPickerValue();
                     if(is_array($value)) {
-                        $colorPickerValue->setValueFromArray($value);
+                        $colorPickerValue->setValueFromHash($value);
                     }
                     return $colorPickerValue;
                 },
                 function ($value) {
                     if ($value instanceof ColorPickerValue) {
-                        return $value->getValueAsArray();
+                        return $value->getValueAsHash();
                     }
                     $colorPickerValue = new ColorPickerValue();
-                    return $colorPickerValue->getValueAsArray();
+                    return $colorPickerValue->getValueAsHash();
                 }
             ));
         }

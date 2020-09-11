@@ -19,7 +19,7 @@ final class Value implements ValueInterface
     public $RGB;
     public $HEX;
 
-    public function setValueFromArray(array $array)
+    public function setValueFromHash(array $array)
     {
         foreach ($array as $key => $value) {
             if(property_exists($this, $key)) {
@@ -29,7 +29,7 @@ final class Value implements ValueInterface
         return $this;
     }
 
-    public function getValueAsArray()
+    public function getValueAsHash()
     {
         return get_object_vars($this);
     }
