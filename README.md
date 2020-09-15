@@ -1,18 +1,11 @@
-# eZColorPickerBundle
+# Codein eZColorPicker
+
 Symfony bundle that add color management to eZ Platform.
 
 ## Installation
 
-### eZPlatform 3.1
-
 ```
 composer require codein/ez-color-picker:dev-develop
-```
-
-### eZPlatform 2.5
-
-```
-composer require codein/ez-color-picker:dev-develop25
 ```
 
 Activate the bundle in AppKernel.php
@@ -60,6 +53,4 @@ HEX: #B01919
 
 You can use this feature when writing migrations.
 
-We also provide a color converter service for your needs : 
-* In eZ 3.1 : \Codein\ColorConverter\ColorConverter
-* In eZ 2.5 : codein.ezcolorpikcerbundle.colorconverter  
+We also provide a color converter service for your needs [here](lib/ColorConverter/ColorConverter.php).
