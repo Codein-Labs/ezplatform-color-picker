@@ -43,9 +43,11 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
             pickr.on('show', (color, instance) => {
                 let containerId = instance.options.el.getAttribute('data-pickr-container-id')
                 let container = this.getContainer(containerId)
-                if(this.formParams[containerId] != undefined && this.getInputValue(container, "HEXa").length === 0) {
+                if(this.formParams[containerId] !== undefined && this.getInputValue(container, "HEXa").length === 0) {
                     let defaultColor = '#106d95FF'
-                    if(this.formParams[containerId].defaultValue.HEXa != null) {
+                    if(this.formParams[containerId].defaultValue !== null
+                        && this.formParams[containerId].defaultValue.hasOwnProperty('HEXa')
+                        && this.formParams[containerId].defaultValue.HEXa !== null) {
                         defaultColor = this.formParams[containerId].defaultValue.HEXa
                     }
                     let colorRepresentation = instance.getColorRepresentation()
@@ -53,7 +55,9 @@ import Pickr from '../../pickr/dist/pickr.es5.min';
                     let event = new Event('input')
                     element.value = defaultColor
                     element.dispatchEvent(event)
-                    instance.setColorRepresentation(colorRepresentation)
+                    if(colorRepresentation !== undefined) {
+                        instance.setColorRepresentation(colorRepresentation)
+                    }
                 }
             })
             pickr.on('save', (color, instance) => {
