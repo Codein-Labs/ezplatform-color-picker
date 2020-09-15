@@ -1,7 +1,7 @@
 {
     "name": "codein/ez-color-picker",
     "description": "eZplatform color picker field type",
-    "type": "symfony-bundle",
+    "type": "ezplatform-bundle",
     "license": "MIT",
     "authors": [
         {
