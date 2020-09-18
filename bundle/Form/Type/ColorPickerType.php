@@ -20,7 +20,8 @@ final class ColorPickerType extends AbstractType
     {
         foreach (['HEX', 'HEXa', 'RGB', 'RGBa', 'HSVa'] as $field) {
             $builder->add($field, TextType::class, [
-                'label' => false,
+                'label' => sprintf('codeincolor.pickr.color.%s', strtolower($field)),
+                'translation_domain' => 'codeincolor_fieldtype',
                 'attr' => [
                     'readonly' => 'readonly'
                 ]
