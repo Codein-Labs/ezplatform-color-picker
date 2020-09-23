@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@simonwep/pickr": "^1.7.4",
+    "@symfony/webpack-encore": "^0.28.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.0.1",
+    "webpack-notifier": "^1.8.0"
+  }
+}

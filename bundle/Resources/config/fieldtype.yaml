@@ -1,0 +1,20 @@
+parameters:
+  codein.fieldtype.color.identifier: 'codeincolor'
+
+services:
+  Codein\eZColorPicker\FieldType\ColorPicker\Type:
+    autoconfigure: false
+    autowire: true
+    public: true
+    calls:
+      - [ 'setColorConverter', ["@Codein\\ColorConverter\\ColorConverter"] ]
+    tags:
+      - { name: ezplatform.field_type, alias: "%codein.fieldtype.color.identifier%" }
+      - { name: ezplatform.field_type.form_mapper.value, fieldType: "%codein.fieldtype.color.identifier%" }
+      - { name: ezplatform.field_type.form_mapper.definition, fieldType: "%codein.fieldtype.color.identifier%" }
+
+  codein.ezcolorpicker.fieldtype.colorpicker.type.notindexable:
+    class: eZ\Publish\Core\FieldType\Unindexed
+    tags:
+      - { name: ezplatform.field_type.indexable, alias: "%codein.fieldtype.color.identifier%" }
+

@@ -1,0 +1,28 @@
+{% trans_default_domain 'codeincolor_fieldtype' %}
+
+{% block codeincolor_field %}
+    <div class="codeincolor__value">
+        <div class="codeincolor__preview" style="color: {{ field.value.RGBa }}"></div>
+        <div class="codeincolor__value-item">
+            <span class="codeincolor__label">{{ "codeincolor.pickr.color.hex"|trans }}</span>
+            {{ field.value.HEX }}
+        </div>
+        <div class="codeincolor__value-item">
+            <span class="codeincolor__label">{{ "codeincolor.pickr.color.hexa"|trans }}</span>
+            {{ field.value.HEXa }}
+        </div>
+        <div class="codeincolor__value-item">
+            <span class="codeincolor__label">{{ "codeincolor.pickr.color.rgb"|trans }}</span>
+            {{ field.value.RGB }}
+        </div>
+        <div class="codeincolor__value-item">
+            <span class="codeincolor__label">{{ "codeincolor.pickr.color.rgba"|trans }}</span>
+            {{ field.value.RGBa }}
+        </div>
+        <div class="codeincolor__value-item">
+            <span class="codeincolor__label">{{ "codeincolor.pickr.color.hsva"|trans }}</span>
+            {{ field.value.HSVa }}
+        </div>
+    </div>
+
+{% endblock %}
