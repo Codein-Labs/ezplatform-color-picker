@@ -2,6 +2,8 @@
 
 Symfony bundle that add color management to eZ Platform.
 
+**Note** : this is the compatibility branch for eZ Platform 2.5 (ezsystems/ezpublish-kernel:7.5). For a eZ 3.x compatible version, please check the master branch of this repository.
+
 ## Installation
 
 ```
@@ -54,3 +56,7 @@ HEX: #B01919
 You can use this feature when writing migrations.
 
 We also provide a color converter service for your needs [here](lib/ColorConverter/ColorConverter.php).
+
+### Acknowledgement
+
+This bundle uses Pickr (https://github.com/Simonwep/pickr) under the MIT Licence.
