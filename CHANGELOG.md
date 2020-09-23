@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2020-09-23
 ## Changed
-- `FieldType/ColorPicker/Type.php` now extends `GenericType`.
+- Bumped minimum eZ Platform kernel requirement to eZ 3.x (so `ezsystems/ezplatform-kernel:1.0.0`).
+- `Codein\eZColorPicker\FieldType\ColorPicker\Type` now extends `eZ\Publish\SPI\FieldType\Generic\Type`.
 
 ## [1.0.0] - 2020-09-23
 ### Added
