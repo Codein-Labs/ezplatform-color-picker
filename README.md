@@ -54,3 +54,7 @@ HEX: #B01919
 You can use this feature when writing migrations.
 
 We also provide a color converter service for your needs [here](lib/ColorConverter/ColorConverter.php).
+
+### Acknowledgement
+
+This bundle uses Pickr (https://github.com/Simonwep/pickr) under the MIT Licence.
