@@ -1,0 +1,5 @@
+services:
+  codein.ezcolorpikcerbundle.colorconverter:
+    class: Codein\ColorConverter\ColorConverter
+    autowire: true
+    public: true

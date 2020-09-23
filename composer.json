@@ -1,0 +1,43 @@
+{
+    "name": "codein/ez-color-picker",
+    "description": "eZplatform color picker field type",
+    "type": "ezplatform-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Codein-Labs",
+            "email": "labs@codein.fr",
+            "homepage": "https://www.codein.fr"
+        },
+        {
+            "name": "Meryll Essig",
+            "email": "meryll.essig@codein.fr"
+        },
+        {
+            "name": "Marc Teinturier",
+            "email": "marc.teinturier@codein.fr"
+        },
+        {
+            "name": "Axel Veber",
+            "email": "axel.veber@codein.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1.3",
+        "ext-json": "*",
+        "ezsystems/ezpublish-kernel": "^7.5@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codein\\eZColorPicker\\": "bundle",
+            "Codein\\ColorConverter\\": "lib/ColorConverter",
+            "Codein\\Tests\\eZColorPicker\\": "tests/bundle",
+            "Codein\\Tests\\ColorConverter\\": "tests/lib/ColorConverter"
+
+        }
+    },
+    "require-dev": {
+        "matthiasnoback/symfony-dependency-injection-test": "v2.3.*"
+    }
+}
