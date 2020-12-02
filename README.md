@@ -2,7 +2,7 @@
 
 Symfony bundle that adds color management to eZ Platform.
 
-**Note** : this is the compatibility branch for eZ Platform 2.5 (ezsystems/ezpublish-kernel:7.5). For a eZ 3.x compatible version, please check the master branch of this repository.
+**Note** : this is the compatibility branch for eZ Platform 2.5 (ezsystems/ezpublish-kernel:7.5). For a Ibexa Platform compatible version, please check this repository instead : https://github.com/Codein-Labs/ibexa-color-picker
 
 ## Installation
 
