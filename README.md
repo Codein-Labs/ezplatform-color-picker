@@ -1,8 +1,8 @@
 # Codein eZColorPicker
 
-Symfony bundle that add color management to eZ Platform.
+Symfony bundle that adds color management to eZ Platform.
 
-**Note** : this is the compatibility branch for eZ Platform 2.5 (ezsystems/ezpublish-kernel:7.5). For a eZ 3.x compatible version, please check the master branch of this repository.
+**Note** : this is the compatibility branch for eZ Platform 2.5 (ezsystems/ezpublish-kernel:7.5). For a Ibexa Platform compatible version, please check this repository instead : https://github.com/Codein-Labs/ibexa-color-picker
 
 ## Installation
 
@@ -26,8 +26,8 @@ Compile the assets for the admin UI
 
 ### Default value
 
-You can set a default color for your field. The default color will be proposed to the user if no color is allready set.
-If the field is require, the default color is assigned as default. If not, no color is assigned.
+You can set a default color for your field. The default color will be proposed to the user if no color is already set.
+If the field is required, the default color is assigned as default. If not, no color is assigned.
 
 ### Twig
 
@@ -50,7 +50,7 @@ HSVa: hsva(0, 86%, 69%, 0.69)
 RGBa: rgba(176, 25, 25, 0.69)
 HEXa: #B01919B0
 RGB: rgb(176, 25, 25)
-HEX: #B01919  
+HEX: #B01919
 ```
 
 You can use this feature when writing migrations.
