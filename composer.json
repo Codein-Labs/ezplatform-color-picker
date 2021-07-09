@@ -1,9 +1,8 @@
 {
-    "name": "axelveber/ez-color-picker",
+    "name": "codein/ez-color-picker",
     "description": "eZplatform color picker field type",
     "type": "ezplatform-bundle",
     "license": "MIT",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Codein-Labs",
