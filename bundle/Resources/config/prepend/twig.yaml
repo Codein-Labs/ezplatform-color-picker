@@ -1,2 +1,2 @@
 form_themes:
-  - '@ezdesign/ColorPicker/field_template.html.twig'
+  - '@eZColorPicker/admin/field_template.html.twig'

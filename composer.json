@@ -1,8 +1,9 @@
 {
-    "name": "codein/ez-color-picker",
+    "name": "axelveber/ez-color-picker",
     "description": "eZplatform color picker field type",
     "type": "ezplatform-bundle",
     "license": "MIT",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Codein-Labs",
@@ -37,6 +38,7 @@
         }
     },
     "require-dev": {
-        "matthiasnoback/symfony-dependency-injection-test": "v2.3.*"
+        "matthiasnoback/symfony-dependency-injection-test": "v2.3.*",
+        "phpunit/phpunit": "^6.5"
     }
 }
