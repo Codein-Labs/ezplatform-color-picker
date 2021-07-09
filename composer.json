@@ -37,6 +37,7 @@
         }
     },
     "require-dev": {
-        "matthiasnoback/symfony-dependency-injection-test": "v2.3.*"
+        "matthiasnoback/symfony-dependency-injection-test": "v2.3.*",
+        "phpunit/phpunit": "^6.5"
     }
 }

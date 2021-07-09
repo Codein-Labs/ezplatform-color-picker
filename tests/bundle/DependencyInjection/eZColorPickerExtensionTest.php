@@ -35,17 +35,27 @@ class eZColorPickerExtensionTest extends AbstractExtensionTestCase
         $actualPrependedConfig = array_merge(...$actualPrependedConfig);
 
         $expectedPrependedConfig = [
-            'field_templates' => [
-                [
-                    'template' => '@ezdesign/ColorPicker/content_fields.html.twig',
-                    'priority' => 1,
-                ],
-            ]
+            'admin_group' => [
+                'field_templates' => [
+                    [
+                        'template' => '@eZColorPicker/admin/content_fields.html.twig',
+                        'priority' => 1,
+                    ]
+                ]
+            ],
+            'default' => [
+                'field_templates' => [
+                    [
+                        'template' => '@eZColorPicker/standard/content_fields.html.twig',
+                        'priority' => 1,
+                    ],
+                ]
+            ],
         ];
 
         self::assertSame(
             $expectedPrependedConfig,
-            $actualPrependedConfig['system']['default']
+            $actualPrependedConfig['system']
         );
     }
 
@@ -59,7 +69,7 @@ class eZColorPickerExtensionTest extends AbstractExtensionTestCase
 
         $expectedPrependedConfig = [
             'form_themes' => [
-                "@ezdesign/ColorPicker/field_template.html.twig"
+                "@eZColorPicker/admin/field_template.html.twig"
             ]
         ];
 

@@ -1,5 +1,9 @@
 system:
+  admin_group:
+    field_templates:
+      - template: '@eZColorPicker/admin/content_fields.html.twig'
+        priority: 1
   default:
     field_templates:
-      - template: '@ezdesign/ColorPicker/content_fields.html.twig'
+      - template: '@eZColorPicker/standard/content_fields.html.twig'
         priority: 1
